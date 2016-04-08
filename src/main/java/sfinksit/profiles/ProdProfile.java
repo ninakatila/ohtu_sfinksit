@@ -12,8 +12,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.context.annotation.ComponentScan;
 
 @Configuration
+@ComponentScan
 @Profile("prod")
 public class ProdProfile {
 
