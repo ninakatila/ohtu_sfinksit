@@ -9,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import javax.annotation.PostConstruct;
 import org.springframework.context.annotation.Import;
-
+import sfinksit.profiles.DevProfile;
+import sfinksit.profiles.ProdProfile;
 
 @SpringBootApplication
-// @Import({ProdProfile.class})
+@Import({DevProfile.class, ProdProfile.class})
 public class Application {
 
     // private static final Logger log = LoggerFactory.getLogger(Application.class);
