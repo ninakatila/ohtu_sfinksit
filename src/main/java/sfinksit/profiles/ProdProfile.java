@@ -15,7 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.context.annotation.ComponentScan;
 
 @Configuration
-@ComponentScan
+@ComponentScan("sfinksit")
 @Profile("prod")
 public class ProdProfile {
 
