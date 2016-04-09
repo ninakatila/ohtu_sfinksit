@@ -16,6 +16,7 @@ import sfinksit.profiles.ProdProfile;
 @SpringBootApplication
 @Import({DevProfile.class, ProdProfile.class})
 @EnableAutoConfiguration
+@EntityScan("sfinksit.domain")
 public class Application {
 
     // private static final Logger log = LoggerFactory.getLogger(Application.class);
