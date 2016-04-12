@@ -28,7 +28,7 @@ public class ReferenceController {
     public String create(@Valid @ModelAttribute Reference ref, BindingResult bind) {
         
         if (bind.hasErrors()) {
-            return "index";
+            return "create";
         }
         return "redirect:/create";
     }
