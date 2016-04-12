@@ -1,23 +1,24 @@
 package sfinksit.domain;
 
+import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+@Entity
 public class Reference extends AbstractPersistable<Long> {
 
-    public long id;
-    public String author;
-    public String title;
-    public String journal;
-    public int volume;
-    public int number;
-    public int year;
-    public int startPage;
-    public int endPage;
-    public String publisher;
-    public String address;
+    private String author;
+    private String title;
+    private String journal;
+    private int volume;
+    private int number;
+    private int year;
+    private int startPage;
+    private int endPage;
+    private String publisher;
+    private String address;
 
    
-
+//getterit
     public String getAuthor() {
         return author;
     }
@@ -56,6 +57,47 @@ public class Reference extends AbstractPersistable<Long> {
 
     public String getAddress() {
         return address;
+    }
+
+//setterit
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setStartPage(int startPage) {
+        this.startPage = startPage;
+    }
+
+    public void setEndPage(int endPage) {
+        this.endPage = endPage;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
