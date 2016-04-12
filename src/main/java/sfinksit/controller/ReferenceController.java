@@ -20,7 +20,7 @@ public class ReferenceController {
 
     @RequestMapping(method=RequestMethod.GET)
     public String view() {
-        return "create";
+        return "index";
     }
     
     @Transactional
