@@ -4,7 +4,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 public class Reference extends AbstractPersistable<Long> {
 
-    public long id;
+    // public long id;
     public String author;
     public String title;
     public String journal;
