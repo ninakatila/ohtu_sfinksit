@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>article</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div></div>
+
+        <h1>Add reference</h1>
+
+        <form action="#" th:action="@{/references}" th:object="${reference}" method="POST">
+
+<table> 
+        <tr>
+            <td>Author: </td>
+            <td><input type="text" th:field="*{author}" /></td>
+        </tr>
+    
+        <tr>
+            <td>Title: </td>
+            <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+            
+ 	<tr>
+            <td>Journal: </td>
+            <td><input type="text" th:field="*{journal}" /></td>
+        </tr>
+    
+        <tr>
+            <td>Volume: </td>
+            <td><input type="text" th:field="*{volume}" /></td>
+        </tr>
+    
+        <tr>
+            <td>Number: </td>
+            <td><input type="text" th:field="*{number}" /></td>
+        </tr>
+
+	<tr>
+            <td>Publishing year: </td>
+            <td><input type="text" th:field="*{year}" /></td>
+        </tr>
+    
+        <tr>
+            <td>Pages: </td>
+            <td><input type="text" th:field="*{pages}" /></td>
+        </tr>
+
+	<tr>
+            <td>Publisher: </td>
+            <td><input type="text" th:field="*{publisher}" /></td>
+        </tr>
+    
+        <tr>
+            <td>Address: </td>
+            <td><input type="text" th:field="*{address}" /></td>
+        </tr>
+
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+
+        </form>
+    </body>
+</html>

@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import javax.annotation.PostConstruct;
@@ -14,6 +16,8 @@ import sfinksit.profiles.ProdProfile;
 
 @SpringBootApplication
 @Import({DevProfile.class, ProdProfile.class})
+@EnableAutoConfiguration
+@EntityScan("sfinksit.domain")
 public class Application {
 
     // private static final Logger log = LoggerFactory.getLogger(Application.class);
