@@ -12,7 +12,7 @@ import sfinksit.domain.Reference;
 import sfinksit.repository.ReferenceRepository;
 
 @Controller
-@RequestMapping("*")
+@RequestMapping("/references")
 public class ReferenceController {
     
     @Autowired
