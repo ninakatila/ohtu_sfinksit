@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,13 @@ import sfinksit.domain.Reference;
 import sfinksit.repository.ReferenceRepository;
 
 @Controller
-@RequestMapping("/references")
+@RequestMapping("*")
 public class ReferenceController {
     
     @Autowired
     private ReferenceRepository rep;
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(value="/references", method=RequestMethod.GET)
     public String view(@ModelAttribute Reference ref) {
         return "create";
     }
@@ -28,9 +29,16 @@ public class ReferenceController {
     public String create(@Valid @ModelAttribute Reference ref, BindingResult bind) {
         
         if (bind.hasErrors()) {
-            return "create";
+            return "redirect:/references";
         }
-        return "redirect:/create";
+        rep.save(ref);
+        return "redirect:/";
+    }
+    
+    @RequestMapping(value="list", method=RequestMethod.GET)
+    public String list(Model model) {
+        model.addAttribute("references", rep.findAll());
+        return "list";
     }
     
 }
