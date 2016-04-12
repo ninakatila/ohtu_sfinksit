@@ -20,7 +20,7 @@ public class ReferenceController {
 
     @RequestMapping(method=RequestMethod.GET)
     public String view() {
-        return "index";
+        return "create";
     }
     
     @Transactional
@@ -28,7 +28,7 @@ public class ReferenceController {
     public String create(@Valid @ModelAttribute Reference ref, BindingResult bind) {
         
         if (bind.hasErrors()) {
-            return "index";
+            return "create";
         }
         return "redirect:/create";
     }
