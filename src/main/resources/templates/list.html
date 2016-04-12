@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>List</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>    
+        
+        <table>
+            <tr th:each="ref : ${references}">
+                <td>
+                    <p>author = {<span th:text="${ref.author}">author</span>},</p>
+                    <p>title = {<span th:text="${ref.title}">author</span>},</p>
+                    <p>journal = </p>
+                </td>
+            </tr>
+        </table>
+        
+        <p><a href="/">Etusivu</a></p>
+        
+    </body>
+</html>
