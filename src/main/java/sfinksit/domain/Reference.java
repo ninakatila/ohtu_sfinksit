@@ -6,8 +6,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Reference extends AbstractPersistable<Long> {
 
-<<<<<<< HEAD
-    // public long id;
     public String author;
     public String title;
     public String journal;
@@ -18,21 +16,9 @@ public class Reference extends AbstractPersistable<Long> {
     public int endPage;
     public String publisher;
     public String address;
-=======
-    private String author;
-    private String title;
-    private String journal;
-    private int volume;
-    private int number;
-    private int year;
-    private int startPage;
-    private int endPage;
-    private String publisher;
-    private String address;
->>>>>>> 17ac1d7680bea28f5584ae9a0e5cb78b7150bc26
 
    
-//getterit
+    // getterit
     public String getAuthor() {
         return author;
     }

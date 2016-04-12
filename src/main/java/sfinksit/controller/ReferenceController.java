@@ -19,7 +19,7 @@ public class ReferenceController {
     private ReferenceRepository rep;
 
     @RequestMapping(method=RequestMethod.GET)
-    public String view() {
+    public String view(@ModelAttribute Reference ref) {
         return "create";
     }
     

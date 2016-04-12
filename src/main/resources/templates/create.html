@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>article</title>
-        <meta charset="UTF-8">
+        <title>Article</title>
+        <meta charset="UTF-8" />
     </head>
     <body>
         <div></div>
@@ -44,10 +44,10 @@
     
         <tr>
             <td>Pages: </td>
-            <td><input type="text" th:field="*{pages}" /></td>
+            <td><input type="text" th:field="*{startPage}" />-<input type="text" th:field="*{endPage}" /></td>
         </tr>
 
-	<tr>
+        <tr>
             <td>Publisher: </td>
             <td><input type="text" th:field="*{publisher}" /></td>
         </tr>
