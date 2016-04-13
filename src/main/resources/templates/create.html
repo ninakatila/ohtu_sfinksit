@@ -15,46 +15,56 @@
         <tr>
             <td>Author: </td>
             <td><input type="text" th:field="*{author}" /></td>
+            <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Validation error</td>
         </tr>
     
         <tr>
             <td>Title: </td>
             <td><input type="text" th:field="*{title}" /></td>
+             <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Validation error</td>
         </tr>
             
  	<tr>
             <td>Journal: </td>
             <td><input type="text" th:field="*{journal}" /></td>
+             <td th:if="${#fields.hasErrors('journal')}" th:errors="*{journal}">Validation error</td>
         </tr>
     
         <tr>
             <td>Volume: </td>
             <td><input type="text" th:field="*{volume}" /></td>
+             <td th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}">Validation error</td>
         </tr>
     
         <tr>
             <td>Number: </td>
             <td><input type="text" th:field="*{number}" /></td>
+             <td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Validation error</td>
         </tr>
 
 	<tr>
             <td>Publishing year: </td>
             <td><input type="text" th:field="*{year}" /></td>
+             <td th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Validation error</td>
         </tr>
     
         <tr>
             <td>Pages: </td>
             <td><input type="text" th:field="*{startPage}" />-<input type="text" th:field="*{endPage}" /></td>
+            <td th:if="${#fields.hasErrors('startPage')}" th:errors="*{startPage}">Validation error</td>
+             <td th:if="${#fields.hasErrors('endPage')}" th:errors="*{endPage}">Validation error</td>
         </tr>
 
         <tr>
             <td>Publisher: </td>
             <td><input type="text" th:field="*{publisher}" /></td>
+            <td th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">Validation error</td>
         </tr>
     
         <tr>
             <td>Address: </td>
             <td><input type="text" th:field="*{address}" /></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Validation error</td>
         </tr>
 
         <tr>
