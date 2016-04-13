@@ -1,3 +1,4 @@
 *.foo
 target/
 a.txt
+*/.DS_Store

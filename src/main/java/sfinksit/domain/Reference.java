@@ -59,7 +59,7 @@ public class Reference extends AbstractPersistable<Long> {
         return address;
     }
 
-//setterit
+    // setterit
     public void setAuthor(String author) {
         this.author = author;
     }
