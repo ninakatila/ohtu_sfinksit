@@ -37,6 +37,9 @@ public class ReferenceTest {
         
         Reference ref2 = new Reference();
         ref2.setAuthor("Aleksanteri Suuri");
+        ref2.setPublisher("testi");
+        ref2.setJournal("testi");
+        ref2.setTitle("testi");
         references.save(ref2);
         
         assertEquals(2, references.findAll().size());
