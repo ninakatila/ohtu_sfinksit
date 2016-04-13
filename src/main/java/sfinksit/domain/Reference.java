@@ -1,6 +1,7 @@
 package sfinksit.domain;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -9,11 +10,22 @@ public class Reference extends AbstractPersistable<Long> {
     public String author;
     public String title;
     public String journal;
+    
+    @Min(value=0)
     public int volume;
+    
+    @Min(value=0)
     public int number;
+    
+    @Min(value=0)
     public int year;
+    
+    @Min(value=0)
     public int startPage;
+    
+    @Min(value=0)
     public int endPage;
+    
     public String publisher;
     public String address;
 
