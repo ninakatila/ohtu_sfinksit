@@ -9,16 +9,16 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Reference extends AbstractPersistable<Long> {
 
-    @NotBlank
-    @Size(min = 4)
+    //@NotBlank
+    //@Size(min = 4)
     public String author;
 
-    @NotBlank
-    @Size(min = 4)
+//    @NotBlank
+//    @Size(min = 4)
     public String title;
 
-    @NotBlank
-    @Size(min = 4)
+//    @NotBlank
+//    @Size(min = 4)
     public String journal;
 
     @Min(value = 0)
@@ -36,8 +36,8 @@ public class Reference extends AbstractPersistable<Long> {
     @Min(value = 0)
     public int endPage;
 
-    @NotBlank
-    @Size(min = 4)
+//    @NotBlank
+//    @Size(min = 4)
     public String publisher;
     
     public String address;
