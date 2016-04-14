@@ -2,23 +2,23 @@ package sfinksit.domain;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Reference extends AbstractPersistable<Long> {
 
-    //@NotBlank
-    //@Size(min = 4)
+    @NotNull
+    @Size(min = 4)
     public String author;
 
-//    @NotBlank
-//    @Size(min = 4)
+    @NotNull
+    @Size(min = 4)
     public String title;
 
-//    @NotBlank
-//    @Size(min = 4)
+    @NotNull
+    @Size(min = 4)
     public String journal;
 
     @Min(value = 0)
@@ -36,8 +36,8 @@ public class Reference extends AbstractPersistable<Long> {
     @Min(value = 0)
     public int endPage;
 
-//    @NotBlank
-//    @Size(min = 4)
+    @NotNull
+    @Size(min = 4)
     public String publisher;
     
     public String address;
