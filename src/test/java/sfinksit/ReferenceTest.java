@@ -27,11 +27,16 @@ public class ReferenceTest {
     
     @Autowired
     private ReferenceRepository references;
+    
+    //author, title, journal, publisher ei saa olla null
 
     @Test
     public void testSaveReferences() {
         Reference ref1 = new Reference();
         ref1.setAuthor("Author");
+        ref1.setTitle("testi");
+        ref1.setJournal("Herra");
+        ref1.setPublisher("Hakkarainen");
         
         references.save(ref1);
         
