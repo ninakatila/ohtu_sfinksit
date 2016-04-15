@@ -27,6 +27,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import sfinksit.domain.Reference;
+import sfinksit.domain.Article;
 import sfinksit.repository.ReferenceRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -71,9 +72,12 @@ public class ReferenceTest {
     
     public Reference createReference(){
         Reference ref = new Reference();
+        Article article = new Article();
+        
         ref.setAuthor("Author");
         ref.setTitle("testi");
-        ref.setJournal("Herra");
+        article.setJournal("Herra");
+        ref.setArticle(article);
         ref.setPublisher("Hakkarainen");
         return ref;
     }
