@@ -10,10 +10,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Article extends AbstractPersistable<Long> {
 
-    @OneToOne
+    @OneToOne(mappedBy="article")
     public Reference reference;
-    
-    public String bibtexKey;
     
     @NotNull
     @Size(min = 4)
@@ -36,10 +34,6 @@ public class Article extends AbstractPersistable<Long> {
     // getterit
     public Reference getReference() {
         return this.reference;
-    }
-    
-    public String getBibtexKey() {
-        return this.bibtexKey;
     }
     
     public String getJournal() {
@@ -69,10 +63,6 @@ public class Article extends AbstractPersistable<Long> {
     // setterit
     public void setReference(Reference reference) {
         this.reference = reference;
-    }
-    
-    public void setBibtexKey(String bibtexKey) {
-        this.bibtexKey = bibtexKey;
     }
     
     public void setJournal(String journal) {

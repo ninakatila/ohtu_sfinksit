@@ -8,19 +8,21 @@
         <table>
             <tr th:each="ref : ${references}">
                 <td>
+                    <div th:if="${ref.article != null}">
 <pre>
-@article{--,
+@article{<span th:text="${ref.bibtexKey}">key</span>,
 author = {<span th:text="${ref.author}">author</span>},
 title = {<span th:text="${ref.title}">title</span>},
-journal = {<span th:text="${ref.journal}">journal</span>},
-volume = {<span th:text="${ref.volume}">volume</span>},
-number = {<span th:text="${ref.number}">number</span>},
+journal = {<span th:text="${ref.article.journal}">journal</span>},
+volume = {<span th:text="${ref.article.volume}">volume</span>},
+number = {<span th:text="${ref.article.number}">number</span>},
 year = {<span th:text="${ref.year}">year</span>},
-pages = {<span th:text="${ref.startPage}">startPage</span>-<span th:text="${ref.endPage}">endPage</span>},
+pages = {<span th:text="${ref.article.startPage}">startPage</span>--<span th:text="${ref.article.endPage}">endPage</span>},
 publisher = {<span th:text="${ref.publisher}">publisher</span>},
-address = {<span th:text="${ref.address}">address</span>},
+address = {<span th:text="${ref.article.address}">address</span>},
 }
 </pre>
+                    </div>
                 </td>
             </tr>
         </table>

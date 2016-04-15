@@ -1,6 +1,9 @@
 package sfinksit.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -8,6 +11,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Reference extends AbstractPersistable<Long> {
+
+    public String bibtexKey;
 
     @NotNull
     @Size(min = 4)
@@ -17,32 +22,28 @@ public class Reference extends AbstractPersistable<Long> {
     @Size(min = 4)
     public String title;
 
-    @NotNull
-    @Size(min = 4)
-    public String journal;
-
-    @Min(value = 0)
-    public int volume;
-
-    @Min(value = 0)
-    public int number;
-
     @Min(value = 0)
     public int year;
-
-    @Min(value = 0)
-    public int startPage;
-
-    @Min(value = 0)
-    public int endPage;
 
     @NotNull
     @Size(min = 4)
     public String publisher;
     
-    public String address;
+    @OneToOne(cascade={CascadeType.ALL})
+    public Article article;
+    
+    @OneToOne(cascade={CascadeType.ALL})
+    public Book book;
+    
+    @OneToOne(cascade={CascadeType.ALL})
+    public Conference conference;
+    
 
     // getterit
+    public String getBibtexKey() {
+        return this.bibtexKey;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -51,36 +52,24 @@ public class Reference extends AbstractPersistable<Long> {
         return title;
     }
 
-    public String getJournal() {
-        return journal;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
     public int getYear() {
         return year;
-    }
-
-    public int getStartPage() {
-        return startPage;
-    }
-
-    public int getEndPage() {
-        return endPage;
     }
 
     public String getPublisher() {
         return publisher;
     }
-
-    public String getAddress() {
-        return address;
+    
+    public Article getArticle() {
+        return this.article;
+    }
+    
+    public Book getBook() {
+        return this.book;
+    }
+    
+    public Conference getConference() {
+        return this.conference;
     }
 
     // setterit
@@ -92,36 +81,24 @@ public class Reference extends AbstractPersistable<Long> {
         this.title = title;
     }
 
-    public void setJournal(String journal) {
-        this.journal = journal;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public void setStartPage(int startPage) {
-        this.startPage = startPage;
-    }
-
-    public void setEndPage(int endPage) {
-        this.endPage = endPage;
     }
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
-    public void setAddress(String address) {
-        this.address = address;
+    
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+    
+    public void setBook(Book book) {
+        this.book = book;
+    }
+    
+    public void setConference(Conference conference) {
+        this.conference = conference;
     }
 
 }

@@ -1,10 +1,13 @@
 package sfinksit.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Conference extends AbstractPersistable<Long> {
+
+    @OneToOne(mappedBy="conference")
     public Reference ref;
     public String booktitle;
     public String pages;
@@ -12,11 +15,11 @@ public class Conference extends AbstractPersistable<Long> {
     public String endPage;
     
     public Reference getRef() {
-        return getRef();
+        return this.ref;
     }
     
-    public Reference setRef(Reference ref) {
-        return this.ref = ref;
+    public void setRef(Reference ref) {
+        this.ref = ref;
     }
 
     public String getBooktitle() {
