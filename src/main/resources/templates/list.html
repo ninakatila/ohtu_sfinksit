@@ -41,6 +41,22 @@
 <p th:if="${!ref.book.note.isEmpty()}">note = {<span th:text="${ref.book.note}">note</span>},<br/></p>
 <p>}<br/></p>
                     </div>
+                    <div th:if="${ref.conference != null}">
+                        <p>@conference{<span th:text="${ref.bibtexKey}">key</span>,<br/></p>
+                        <p th:if="${!ref.author.isEmpty()}">author = {<span th:text="${ref.author}">author</span>},<br/></p>
+                        <p th:if="${!ref.title.isEmpty()}">title = {<span th:text="${ref.title}">title</span>},<br/></p>
+                        <p th:if="${!ref.conference.editor.isEmpty()}">journal = {<span th:text="${ref.conference.editor}">editor</span>},<br/></p>
+                        <p th:if="${ref.conference.volume != null}">volume/number = {<span th:text="${ref.conference.volume}">volume</span>},<br/></p>
+                        <p th:if="${!ref.conference.series.isEmpty()}">series = {<span th:text="${ref.conference.series}">series</span>},<br/></p>
+                        <p th:if="${ref.year != null}">year = {<span th:text="${ref.year}">year</span>},<br/></p>
+                        <p th:if="${ref.conference.startPage != null}">pages = {<span th:text="${ref.conference.startPage}">startPage</span>--</p><p th:if="${ref.conference.endPage != null}"><span th:text="${ref.conference.endPage}">endPage</span>},<br/></p>
+                        <p th:if="${!ref.publisher.isEmpty()}">publisher = {<span th:text="${ref.publisher}">publisher</span>},<br/></p>
+                        <p th:if="${!ref.conference.address.isEmpty()}">address = {<span th:text="${ref.conference.address}">address</span>},<br/></p>
+                        <p th:if="${!ref.conference.note.isEmpty()}">note = {<span th:text="${ref.conference.note}">note</span>},<br/></p>
+                        <p th:if="${!ref.conference.organization.isEmpty()}">organization = {<span th:text="${ref.conference.organization}">organization</span>},<br/></p>
+                        <p>}<br/></p>
+
+                    </div>
                 </td>
             </tr>
         </table>

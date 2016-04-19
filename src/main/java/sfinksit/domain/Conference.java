@@ -9,10 +9,17 @@ public class Conference extends AbstractPersistable<Long> {
 
     @OneToOne(mappedBy="conference")
     public Reference ref;
+    
     public String booktitle;
-    public String pages;
-    public String startPage;
-    public String endPage;
+    public String editor;
+    public int volume;
+    public String series;
+    public int startPage;
+    public int endPage;
+    public String address;
+    public int month;
+    public String organization;
+    public String note;
     
     public Reference getRef() {
         return this.ref;
@@ -30,27 +37,75 @@ public class Conference extends AbstractPersistable<Long> {
         this.booktitle = booktitle;
     }
 
-    public String getPages() {
-        return pages;
-    }
-
-    public void setPages(String pages) {
-        this.pages = pages;
-    }
-
-    public String getStartPage() {
+    public int getStartPage() {
         return startPage;
     }
 
-    public void setStartPage(String startPage) {
+    public void setStartPage(int startPage) {
         this.startPage = startPage;
     }
 
-    public String getEndPage() {
+    public int getEndPage() {
         return endPage;
     }
 
-    public void setEndPage(String endPage) {
+    public void setEndPage(int endPage) {
         this.endPage = endPage;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }
