@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>book</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <div>
+            <h1>Add new book</h1>
+        </div>
+        <div>
+            <form action="#" th:action="@{/references/createBook}" th:object="${reference}" method="POST">
+                <table>
+                    <tr>
+                        <td>Citation key:</td>
+                        <td><input type="text" th:field="*{bibtexKey}" /></td>
+                        <td th:if="${#fields.hasErrors('bibtexKey')}" th:errors="*{bibtexKey}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Author/Editor:</td>
+                        <td><input type="text" th:field="*{author}" /></td>
+                        <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Title:</td>
+                        <td><input type="text" th:field="*{title}" /></td>
+                        <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Year:</td>
+                        <td><input type="text" th:field="*{year}" /></td>
+                        <td th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Publisher:</td>
+                        <td><input type="text" th:field="*{publisher}" /></td>
+                        <td th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Edition:</td>
+                        <td><input type="text" th:field="*{book.edition}" /></td>
+                        <td th:if="${#fields.hasErrors('book.edition')}" th:errors="*{book.edition}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Volume:</td>
+                        <td><input type="text" th:field="*{book.volume}" /></td>
+                        <td th:if="${#fields.hasErrors('book.volume')}" th:errors="*{book.volume}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Series:</td>
+                        <td><input type="text" th:field="*{book.series}" /></td>
+                        <td th:if="${#fields.hasErrors('book.series')}" th:errors="*{book.series}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td><input type="text" th:field="*{book.address}" /></td>
+                        <td th:if="${#fields.hasErrors('book.address')}" th:errors="*{book.address}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Month:</td>
+                        <td><input type="text" th:field="*{book.month}" /></td>
+                        <td th:if="${#fields.hasErrors('book.month')}" th:errors="*{book.month}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Note:</td>
+                        <td><input type="text" th:field="*{book.note}" /></td>
+                        <td th:if="${#fields.hasErrors('book.note')}" th:errors="*{book.note}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
