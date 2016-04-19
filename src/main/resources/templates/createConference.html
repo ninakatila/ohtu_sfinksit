@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>book</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <div>
+            <h1>Add new conference</h1>
+        </div>
+        <div>
+            <form action="#" th:action="@{/references/createConference}" th:object="${reference}" method="POST">
+                <table>
+                    <tr>
+                        <td>Citation key:</td>
+                        <td><input type="text" th:field="*{bibtexKey}" /></td>
+                        <td th:if="${#fields.hasErrors('bibtexKey')}" th:errors="*{bibtexKey}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Author/Editor:</td>
+                        <td><input type="text" th:field="*{author}" /></td>
+                        <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Title:</td>
+                        <td><input type="text" th:field="*{title}" /></td>
+                        <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Year:</td>
+                        <td><input type="text" th:field="*{year}" /></td>
+                        <td th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Publisher:</td>
+                        <td><input type="text" th:field="*{publisher}" /></td>
+                        <td th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Edition:</td>
+                        <td><input type="text" th:field="*{conference.editor}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.editor')}" th:errors="*{conference.editor}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Volume/Number:</td>
+                        <td><input type="text" th:field="*{conference.volume}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.volume')}" th:errors="*{conference.volume}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Series:</td>
+                        <td><input type="text" th:field="*{conference.series}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.series')}" th:errors="*{conference.series}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td><input type="text" th:field="*{conference.address}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.address')}" th:errors="*{conference.address}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Month:</td>
+                        <td><input type="text" th:field="*{conference.month}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.month')}" th:errors="*{conference.month}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Note:</td>
+                        <td><input type="text" th:field="*{conference.note}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.note')}" th:errors="*{conference.note}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Organization: </td>
+                        <td><input type="text" th:field="*{conference.organization}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.organization')}" th:errors="*{conference.organization}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td>Pages: </td>
+                        <td><input type="text" th:field="*{conference.startPage}" />-<input type="text" th:field="*{conference.endPage}" /></td>
+                        <td th:if="${#fields.hasErrors('conference.startPage')}" th:errors="*{conference.startPage}">Validation error</td>
+                        <td th:if="${#fields.hasErrors('conference.endPage')}" th:errors="*{conference.endPage}">Validation error</td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
