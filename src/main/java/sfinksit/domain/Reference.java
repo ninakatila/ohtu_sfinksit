@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Reference extends AbstractPersistable<Long> {
 
+    // @Column(unique=true)
     public String bibtexKey;
 
     @NotNull
@@ -73,6 +74,10 @@ public class Reference extends AbstractPersistable<Long> {
     }
 
     // setterit
+    public void setBibtexKey(String key) {
+        this.bibtexKey = key;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
     }
