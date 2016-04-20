@@ -28,20 +28,21 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import sfinksit.domain.Reference;
 import sfinksit.domain.Article;
+import sfinksit.domain.Book;
+import sfinksit.domain.Conference;
 import sfinksit.repository.ReferenceRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 public class ReferenceTest {
-    
+
     @Autowired
     private ReferenceRepository references;
     private LocalValidatorFactoryBean localValidatorFactory;
-    
+
     //author, title, journal, publisher ei saa olla null
-    
     @Before
-    public void setUp(){
+    public void setUp() {
         localValidatorFactory = new LocalValidatorFactoryBean();
         localValidatorFactory.setProviderClass(HibernateValidator.class);
         localValidatorFactory.afterPropertiesSet();
@@ -50,35 +51,78 @@ public class ReferenceTest {
     @Test
     public void testSaveReferences() {
         references.deleteAll();
-        Reference ref1 = createReference();
-        
+        Reference ref1 = createArticleReference();
+
         references.save(ref1);
-        
-        Reference ref2 = createReference();
+
+        Reference ref2 = createBookReference();
         references.save(ref2);
-        
-        assertEquals(2, references.findAll().size());
+
+        Reference ref3 = createConfReference();
+        references.save(ref3);
+
+        assertEquals(3, references.findAll().size());
     }
-    
+
     @Test
     public void YearNotNegative() {
         references.deleteAll();
-        final Reference ref = createReference();
+        final Reference ref = createArticleReference();
         ref.setYear(-500);
-        
+
         Set<ConstraintViolation<Reference>> constraintViolations = localValidatorFactory.validate(ref);
         assertTrue("Expected validation error not found", constraintViolations.size() == 1);
     }
-    
-    public Reference createReference(){
+
+    public Reference createArticleReference() {
         Reference ref = new Reference();
         Article article = new Article();
-        
+
         ref.setAuthor("Author");
         ref.setTitle("testi");
         article.setJournal("Herra");
         ref.setArticle(article);
         ref.setPublisher("Hakkarainen");
+        return ref;
+    }
+
+    @Test
+    public void YearOk() {
+        references.deleteAll();
+        final Reference ref = createBookReference();
+        ref.setYear(1975);
+
+        Set<ConstraintViolation<Reference>> constraintViolations = localValidatorFactory.validate(ref);
+        assertTrue("Expected validation error not found", constraintViolations.size() == 0);
+    }
+
+    public Reference createBookReference() {
+        Reference ref = new Reference();
+        Book book = new Book();
+        ref.setAuthor("Author");
+        ref.setPublisher("Publisher");
+        ref.setTitle("Title");
+        ref.setBook(book);
+        return ref;
+    }
+
+    @Test
+    public void YearOk2() {
+        references.deleteAll();
+        final Reference ref = createConfReference();
+        ref.setYear(1989);
+
+        Set<ConstraintViolation<Reference>> constraintViolations = localValidatorFactory.validate(ref);
+        assertTrue("Expected validation error not found", constraintViolations.size() == 0);
+    }
+
+    public Reference createConfReference() {
+        Reference ref = new Reference();
+        Conference conf = new Conference();
+        ref.setAuthor("Author");
+        ref.setPublisher("Publisher");
+        ref.setTitle("Title");
+        ref.setConference(conf);
         return ref;
     }
 }
