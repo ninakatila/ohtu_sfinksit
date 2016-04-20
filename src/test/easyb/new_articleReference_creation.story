@@ -17,7 +17,7 @@ scenario "Article creation succesfull with valid values", {
 
     when 'created', {
         element = driver.findElement(By.name("bibtexKey"));
-        element.sendKeys("W04");
+        element.sendKeys("S04");
         element = driver.findElement(By.name("author"));
         element.sendKeys("Kirjoittaja");
         element = driver.findElement(By.name("title"));
@@ -50,7 +50,7 @@ scenario "Article creation unsuccesfull with missing values", {
 
     when 'created', {
         element = driver.findElement(By.name("bibtexKey"));
-        element.sendKeys("W05");
+        element.sendKeys("S05");
         
         element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
