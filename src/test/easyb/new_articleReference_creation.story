@@ -22,21 +22,21 @@ scenario "Article creation succesfull with valid values", {
         element.sendKeys("Kirjoittaja");
         element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("journal"));
+        element = driver.findElement(By.name("article.journal"));
         element.sendKeys("Julkaisu");
-        element = driver.findElement(By.name("volume"));
+        element = driver.findElement(By.name("article.volume"));
         element.sendKeys("10");
-        element = driver.findElement(By.name("number"));
+        element = driver.findElement(By.name("article.number"));
         element.sendKeys("20");
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
 
-        element = driver.findElement(By.name("submit"));
-        element.submit();
+        element = driver.findElement(By.tagName("button"));
+        element.click();
     }
  
     then 'article is created', {
-        driver.getPageSource().contains("Miniprojekti").shouldBe true
+        driver.getPageSource().contains("Reference").shouldBe true
     }
 }
 
@@ -54,17 +54,11 @@ scenario "Article creation unsuccesfull with missing values", {
         
         element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("journal"));
-        element.sendKeys("Julkaisu");
-        element = driver.findElement(By.name("volume"));
-        element.sendKeys("10");
-        element = driver.findElement(By.name("number"));
-        element.sendKeys("20");
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
 
-        element = driver.findElement(By.name("submit"));
-        element.submit();
+        element = driver.findElement(By.tagName("button"));
+        element.click();
     }
  
     then 'user stays in creation page', {

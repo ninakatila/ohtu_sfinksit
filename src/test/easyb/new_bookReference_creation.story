@@ -25,12 +25,12 @@ scenario "Book creation succesfull with valid values", {
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
 
-        element = driver.findElement(By.name("submit"));
-        element.submit();
+        element = driver.findElement(By.tagName("button"));
+        element.click();
     }
  
     then 'book is created', {
-        driver.getPageSource().contains("Miniprojekti").shouldBe true
+        driver.getPageSource().contains("Reference").shouldBe true
     }
 }
 
@@ -51,12 +51,12 @@ scenario "Book creation unsuccesfull with missing values", {
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
 
-        element = driver.findElement(By.name("submit"));
+        element = driver.findElement(By.tagName("button"));
         element.submit();
     }
  
     then 'user stays in creation page', {
-        driver.getPageSource().contains("Add reference").shouldBe true
+        driver.getPageSource().contains("Add new book").shouldBe true
     }
 }
 

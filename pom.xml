@@ -116,6 +116,25 @@
                             <goal>repackage</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>start-spring-boot</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>stop-spring-boot</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

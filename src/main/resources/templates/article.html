@@ -20,61 +20,61 @@
         
         <tr>
             <td>Author: </td>
-            <td><input type="text" th:field="*{author}" /></td>
+            <td><input type="text" th:field="*{author}" id="index" /></td>
             <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Validation error</td>
         </tr>
     
         <tr>
             <td>Title: </td>
-            <td><input type="text" th:field="*{title}" /></td>
+            <td><input type="text" th:field="*{title}" id="title" /></td>
              <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Validation error</td>
         </tr>
             
         <tr>
             <td>Journal: </td>
-            <td><input type="text" th:field="*{article.journal}" /></td>
+            <td><input type="text" th:field="*{article.journal}" name="journal" /></td>
              <td th:if="${#fields.hasErrors('article.journal')}" th:errors="*{article.journal}">Validation error</td>
         </tr>
     
         <tr>
             <td>Volume: </td>
-            <td><input type="text" th:field="*{article.volume}" /></td>
+            <td><input type="text" th:field="*{article.volume}" id="volume" /></td>
              <td th:if="${#fields.hasErrors('article.volume')}" th:errors="*{article.volume}">Validation error</td>
         </tr>
     
         <tr>
             <td>Number: </td>
-            <td><input type="text" th:field="*{article.number}" /></td>
+            <td><input type="text" th:field="*{article.number}" id="number" /></td>
              <td th:if="${#fields.hasErrors('article.number')}" th:errors="*{article.number}">Validation error</td>
         </tr>
 
         <tr>
             <td>Publishing year: </td>
-            <td><input type="text" th:field="*{year}" /></td>
+            <td><input type="text" th:field="*{year}" id="year" /></td>
              <td th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Validation error</td>
         </tr>
     
         <tr>
             <td>Pages: </td>
-            <td><input type="text" th:field="*{article.startPage}" />-<input type="text" th:field="*{article.endPage}" /></td>
+            <td><input type="text" th:field="*{article.startPage}" id="startPage" />-<input type="text" th:field="*{article.endPage}" id="endPage" /></td>
             <td th:if="${#fields.hasErrors('article.startPage')}" th:errors="*{article.startPage}">Validation error</td>
              <td th:if="${#fields.hasErrors('article.endPage')}" th:errors="*{article.endPage}">Validation error</td>
         </tr>
 
         <tr>
             <td>Publisher: </td>
-            <td><input type="text" th:field="*{publisher}" /></td>
+            <td><input type="text" th:field="*{publisher}" id="publisher" /></td>
             <td th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">Validation error</td>
         </tr>
     
         <tr>
             <td>Address: </td>
-            <td><input type="text" th:field="*{article.address}" /></td>
+            <td><input type="text" th:field="*{article.address}" id="address" /></td>
             <td th:if="${#fields.hasErrors('article.address')}" th:errors="*{article.address}">Validation error</td>
         </tr>
 
         <tr>
-            <td><button type="submit">Submit</button></td>
+            <td><button type="submit" name="submit" id="submit">submit</button></td>
         </tr>
     </table>
 
