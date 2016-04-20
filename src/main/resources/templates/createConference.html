@@ -8,6 +8,11 @@
         <div>
             <h1>Add new conference</h1>
         </div>
+        
+        <div th:if="${notvalidBibtexkey}">
+            <p><b>BibtexKey has to be unique</b></p>
+        </div>
+        
         <div>
             <form action="#" th:action="@{/references/createConference}" th:object="${reference}" method="POST">
                 <table>

@@ -8,6 +8,10 @@
         <div>
             <h1>Add new book</h1>
         </div>
+        
+        <div th:if="${notvalidBibtexkey}">
+            <p><b>BibtexKey has to be unique</b></p>
+        </div>
 
         <div>
             <form action="#" th:action="@{/references/createBook}" th:object="${reference}" method="POST">

@@ -1,9 +1,11 @@
 package sfinksit.controller;
 
+import java.util.List;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +33,13 @@ public class BookController {
     
     @Transactional
     @RequestMapping(method=RequestMethod.POST)
-    public String create(@Valid @ModelAttribute Reference reference, BindingResult bind, RedirectAttributes redirect) {
+    public String create(@Valid @ModelAttribute Reference reference, BindingResult bind, RedirectAttributes redirect, Model model) {
         if (bind.hasErrors()) {
+            return "createBook";
+        }
+        List list = rep.findExistingBibtexKey(reference.bibtexKey);
+        if (list.size() > 0){
+            model.addAttribute("notvalidBibtexkey", "BibtexKey has to be unique");
             return "createBook";
         }
         
