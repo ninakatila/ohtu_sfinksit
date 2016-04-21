@@ -127,6 +127,7 @@
                         <configuration>
                             <scanIntervalSeconds>0</scanIntervalSeconds>
                             <daemon>true</daemon>
+                            <fork>true</fork>
                         </configuration>
                     </execution>
                     <execution>

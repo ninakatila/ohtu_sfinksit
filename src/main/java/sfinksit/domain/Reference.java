@@ -27,7 +27,7 @@ public class Reference extends AbstractPersistable<Long> {
     public int year;
 
     @NotNull
-    @Size(min = 4)
+    @Size(min = 3)
     public String publisher;
     
     @OneToOne(cascade={CascadeType.ALL})
