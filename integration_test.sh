@@ -16,4 +16,4 @@ if [ $RETURN_CODE != 0 ]; then
 fi
 
 # Shutdown the easyB server
-kill $SPRING_PID
+killall java
