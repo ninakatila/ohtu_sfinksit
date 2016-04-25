@@ -1,6 +1,5 @@
 package sfinksit.controller;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,24 +53,9 @@ public class ReferenceController {
             model.addAttribute("failedSearch", "Hakuehto liian pitkä");
             return "findObject";
         }
-        List<Reference> list = rep.findSearchFromArticle(searchTerm);
-        List<Reference> list2 = rep.findSearchFromBook(searchTerm);
-        List<Reference> list3 = rep.findSearchFromConference(searchTerm);
-        list = combineLists(list, list2, list3);
 
-        model.addAttribute("references", list);
-
+        model.addAttribute("references", rep.findSearchTermFromAll(searchTerm));
         return "list";
-    }
-    
-    public List<Reference> combineLists(List<Reference> list, List<Reference> list2, List<Reference> list3) {
-        for (Reference ref : list2) {
-            list.add(ref);
-        }
-        for (Reference ref2 : list3) {
-            list.add(ref2);
-        }
-        return list;
     }
     
     public boolean validateStringSearch(String searchTerm) {
