@@ -9,6 +9,10 @@
             <h1>Hakusana</h1>
         </div>
         
+        <div th:if="${failedSearch}">
+            <p><b>Hakuehto liian pitkä</b></p>
+        </div>
+        
         <div>
             <form action="#" th:action="@{/search}" th:object="${String}" method="POST">
                 <input type="text" name="search" />

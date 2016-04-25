@@ -50,6 +50,10 @@ public class ReferenceController {
     
     @RequestMapping(value="search", method=RequestMethod.POST)
     public String findThisObject(@RequestParam(value = "search") String searchTerm, Model model){
+        if (!validateStringSearch(searchTerm)){
+            model.addAttribute("failedSearch", "Hakuehto liian pitkä");
+            return "findObject";
+        }
         List<Reference> list = rep.findSearchFromArticle(searchTerm);
         List<Reference> list2 = rep.findSearchFromBook(searchTerm);
         List<Reference> list3 = rep.findSearchFromConference(searchTerm);
@@ -68,6 +72,12 @@ public class ReferenceController {
             list.add(ref2);
         }
         return list;
+    }
+    
+    public boolean validateStringSearch(String searchTerm) {
+        if (searchTerm.length() > 20) return false;
+        //injektion mahdollisuus, jos suoraan merkkijonosta tehdään query
+        return true;
     }
     
 }
