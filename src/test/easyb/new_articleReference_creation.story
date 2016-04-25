@@ -36,7 +36,40 @@ scenario "Article creation succesfull with valid values", {
     }
  
     then 'article is created', {
-        driver.getPageSource().contains("Reference").shouldBe true
+        driver.getPageSource().contains("Reference created").shouldBe true
+    }
+}
+scenario "Article creation succesfull with valid values and check list page", {
+   given 'created', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080");
+        element = driver.findElement(By.linkText("Lisää uusi artikkeli"));       
+        element.click();       
+    }
+when 'move to list page', {
+ element = driver.findElement(By.name("bibtexKey"));
+        element.sendKeys("S06");
+        element = driver.findElement(By.name("author"));
+        element.sendKeys("Kirjoittaja");
+        element = driver.findElement(By.name("title"));
+        element.sendKeys("Otsikko");
+        element = driver.findElement(By.name("article.journal"));
+        element.sendKeys("Julkaisu");
+        element = driver.findElement(By.name("article.volume"));
+        element.sendKeys("10");
+        element = driver.findElement(By.name("article.number"));
+        element.sendKeys("20");
+        element = driver.findElement(By.name("publisher"));
+        element.sendKeys("Julkaisija");
+
+        element = driver.findElement(By.tagName("button"));
+        element.click();
+       element = driver.findElement(By.linkText("Kaikki lähteet"));       
+        element.click(); 
+    }
+ 
+    then 'check list page', {
+        driver.getPageSource().contains("S06").shouldBe true
     }
 }
 
@@ -65,4 +98,5 @@ scenario "Article creation unsuccesfull with missing values", {
         driver.getPageSource().contains("Add reference").shouldBe true
     }
 }
+
 
