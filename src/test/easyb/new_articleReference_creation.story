@@ -36,7 +36,15 @@ scenario "Article creation succesfull with valid values", {
     }
  
     then 'article is created', {
-        driver.getPageSource().contains("Reference").shouldBe true
+        driver.getPageSource().contains("Reference created").shouldBe true
+    }
+when 'move to list page', {
+       element = driver.findElement(By.linkText("Kaikki lähteet"));       
+        element.click(); 
+    }
+ 
+    then 'check list page', {
+        driver.getPageSource().contains("S04").shouldBe true
     }
 }
 
@@ -63,6 +71,14 @@ scenario "Article creation unsuccesfull with missing values", {
  
     then 'user stays in creation page', {
         driver.getPageSource().contains("Add reference").shouldBe true
+    }
+when 'move to list page', {
+       element = driver.findElement(By.linkText("Kaikki lähteet"));       
+        element.click(); 
+    }
+ 
+    then 'check list page', {
+        driver.getPageSource().contains("S05").shouldBe false
     }
 }
 
