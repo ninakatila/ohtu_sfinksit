@@ -11,7 +11,7 @@ RETURN_CODE=$?
 # If integration test didn't succeed, exit with an error to signal
 # the tests failed
 if [ $RETURN_CODE != 0 ]; then
-	kill $SPRING_PID;
+	killall java;
 	exit 1;
 fi
 
