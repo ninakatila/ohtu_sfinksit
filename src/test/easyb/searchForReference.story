@@ -23,7 +23,7 @@ before "create article, book and conference", {
     element = drivers.findElement(By.name("article.address"));
     element.sendKeys("Pohjoinen");
 
-    element = drivers.findElement(By.tagName("button"));Lumiukon seikkailut
+    element = drivers.findElement(By.tagName("button"));
     element.click();
     
     driverA = new HtmlUnitDriver();
@@ -116,7 +116,7 @@ scenario "Search returns several items", {
 
     when 'search with a given word', {
         element = driver.findElement(By.name("search"));
-        element.sendKeys("kahvia");
+        element.sendKeys("Kahvia");
 
         element = driver.findElement(By.tagName("button"));
         element.click();
@@ -125,7 +125,8 @@ scenario "Search returns several items", {
     then 'article is found', {
         driver.getPageSource().contains("Lumiukko Maailma").shouldBe true
     }
-    and then 'book is found', {
+    and 
+    then 'book is found', {
         driver.getPageSource().contains("Mahtava Joutsen").shouldBe true
     }
 }
