@@ -60,21 +60,20 @@ scenario "Article creation succesfull with valid values and check list page", {
         element.sendKeys("20");
         element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
+        element = driver.findElement(By.name("year"));
+        element.sendKeys("2016");
 
         element = driver.findElement(By.tagName("button"));
         element.click();
-
-    }
-
-    when 'move to list page', {
         element = driver.findElement(By.partialLinkText("Kaikki"));       
         element.click(); 
+
     }
  
     then 'check list page', {
         driver.getPageSource().contains("V2016").shouldBe true
     }
- }
+}
 
 scenario "Article creation unsuccesfull with missing values", {
    given 'created', {
