@@ -120,6 +120,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--
             <plugin>
                 <groupId>org.easyb</groupId>
                 <artifactId>maven-easyb-plugin</artifactId>
@@ -138,6 +140,7 @@
                     </storyReport>
                 </configuration>
             </plugin>
+            -->
         </plugins>
     </build>
 
