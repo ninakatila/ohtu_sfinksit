@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sfinksit.domain.Reference;
 import sfinksit.repository.ConferenceRepository;
 import sfinksit.repository.ReferenceRepository;
+import sfinksit.tools.Generator;
 
 @Controller
 @RequestMapping("/references/createConference")
@@ -22,8 +23,6 @@ public class ConferenceController {
     @Autowired
     private ReferenceRepository rep;
     
-    @Autowired
-    private ConferenceRepository confrep;
     
     @RequestMapping(method=RequestMethod.GET)
     public String viewCreatePage(@ModelAttribute Reference reference) {
@@ -36,7 +35,12 @@ public class ConferenceController {
         if (bind.hasErrors()) {
             return "createConference";
         }
-        
+         if (reference.bibtexKey.isEmpty()) {
+
+            Generator gen = new Generator();
+            reference.bibtexKey = gen.generate(rep, reference);
+
+        }
         List list = rep.findExistingBibtexKey(reference.bibtexKey);
         if (list.size() > 0){
             model.addAttribute("notvalidBibtexkey", "BibtexKey has to be unique");

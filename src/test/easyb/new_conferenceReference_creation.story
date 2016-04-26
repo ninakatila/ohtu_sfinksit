@@ -8,14 +8,14 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 description 'An user can add a new conference'
 
 scenario "Conference creation succesfull with valid values", {
-   given 'Add new Conference', {
+   given 'Move to page', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080");
         element = driver.findElement(By.linkText("Lisää uusi konferenssi"));       
         element.click();       
     }
 
-    when 'Adding new Conference', {
+    when 'Values entered and submit clicked', {
         element = driver.findElement(By.name("bibtexKey"));
         element.sendKeys("B06");
         element = driver.findElement(By.name("author"));
@@ -30,19 +30,19 @@ scenario "Conference creation succesfull with valid values", {
     }
  
     then 'Conference is created', {
-        driver.getPageSource().contains("Reference").shouldBe true
+        driver.getPageSource().contains("Reference created").shouldBe true
     }
 }
 
 scenario "Conference creation unsuccesfull with missing values", {
-   given 'Add new Conference', {
+   given 'Move to page', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080");
         element = driver.findElement(By.linkText("Lisää uusi konferenssi"));       
         element.click();       
     }
 
-    when 'Adding new Conference', {
+    when 'Values entered and submit clicked', {
         element = driver.findElement(By.name("bibtexKey"));
         element.sendKeys("B07");
         

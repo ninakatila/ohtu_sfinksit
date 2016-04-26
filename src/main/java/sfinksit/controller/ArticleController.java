@@ -11,22 +11,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sfinksit.repository.ArticleRepository;
-import sfinksit.repository.ReferenceRepository;
 import sfinksit.domain.Article;
 import sfinksit.domain.Reference;
+import sfinksit.repository.ArticleRepository;
+import sfinksit.repository.ReferenceRepository;
+import sfinksit.tools.Generator;
 
 @Controller
 @RequestMapping("/references/article")
 public class ArticleController {
 
-    private static char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'};
-
     @Autowired
     private ReferenceRepository rep;
-
-    @Autowired
-    private ArticleRepository articlerep;
 
     @RequestMapping(method = RequestMethod.GET)
     public String viewCreatePage(@ModelAttribute Reference reference) {
@@ -43,19 +39,9 @@ public class ArticleController {
 
         if (reference.bibtexKey.isEmpty()) {
 
-            String key = reference.bibtexKey = reference.author.substring(0, 1) + reference.year;
-            if (rep.findExistingBibtexKey(key).size()>0) {
-                for (int i = 0; i < 6; i++) {
-                    key = key + alphabet[i];
-                    if (rep.findExistingBibtexKey(key).size()>0) {
-                        key = key.substring(0, key.length() - 1);
-                    } else {
-                        break;
-                    }
+            Generator gen = new Generator();
+            reference.bibtexKey = gen.generate(rep, reference);
 
-                }
-            }
-            reference.bibtexKey = key;
         }
 
         List list = rep.findExistingBibtexKey(reference.bibtexKey);

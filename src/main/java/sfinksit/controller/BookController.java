@@ -15,6 +15,7 @@ import sfinksit.domain.Book;
 import sfinksit.domain.Reference;
 import sfinksit.repository.BookRepository;
 import sfinksit.repository.ReferenceRepository;
+import sfinksit.tools.Generator;
 
 @Controller
 @RequestMapping("/references/createBook")
@@ -23,8 +24,6 @@ public class BookController {
     @Autowired
     private ReferenceRepository rep;
     
-    @Autowired
-    private BookRepository bookrep;
     
     @RequestMapping(method=RequestMethod.GET)
     public String viewCreatePage(@ModelAttribute Reference reference) {
@@ -36,6 +35,12 @@ public class BookController {
     public String create(@Valid @ModelAttribute Reference reference, BindingResult bind, RedirectAttributes redirect, Model model) {
         if (bind.hasErrors()) {
             return "createBook";
+        }
+         if (reference.bibtexKey.isEmpty()) {
+
+            Generator gen = new Generator();
+            reference.bibtexKey = gen.generate(rep, reference);
+
         }
         List list = rep.findExistingBibtexKey(reference.bibtexKey);
         if (list.size() > 0){

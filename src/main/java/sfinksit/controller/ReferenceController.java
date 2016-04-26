@@ -16,40 +16,29 @@ import sfinksit.repository.ReferenceRepository;
 @Controller
 @RequestMapping("*")
 public class ReferenceController {
-    
+
     @Autowired
     private ReferenceRepository rep;
 
-    @RequestMapping(value="/references", method=RequestMethod.GET)
-    public String view(@ModelAttribute Reference ref) {
-        return "create";
+    @RequestMapping(method = RequestMethod.GET)
+    public String view() {
+        return "index";
     }
-    
-    @Transactional
-    @RequestMapping(method=RequestMethod.POST)// 
-    public String create(@Valid @ModelAttribute Reference ref, BindingResult bind) {
-        
-        if (bind.hasErrors()) {
-            return "redirect:/references";
-        }
-        rep.save(ref);
-        return "redirect:/";
-    }
-    
-    @RequestMapping(value="list", method=RequestMethod.GET)
+
+    @RequestMapping(value = "list", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("references", rep.findAll());
         return "list";
     }
-    
-    @RequestMapping(value="search", method=RequestMethod.GET)
-    public String viewfindThisObject(String name, @ModelAttribute Reference reference){
+
+    @RequestMapping(value = "search", method = RequestMethod.GET)
+    public String viewfindThisObject(String name, @ModelAttribute Reference reference) {
         return "findObject";
     }
-    
-    @RequestMapping(value="search", method=RequestMethod.POST)
-    public String findThisObject(@RequestParam(value = "search") String searchTerm, Model model){
-        if (!validateStringSearch(searchTerm)){
+
+    @RequestMapping(value = "search", method = RequestMethod.POST)
+    public String findThisObject(@RequestParam(value = "search") String searchTerm, Model model) {
+        if (!validateStringSearch(searchTerm)) {
             model.addAttribute("failedSearch", "Hakuehto liian pitkä");
             return "findObject";
         }
@@ -57,11 +46,13 @@ public class ReferenceController {
         model.addAttribute("references", rep.findSearchTermFromAll(searchTerm));
         return "list";
     }
-    
+
     public boolean validateStringSearch(String searchTerm) {
-        if (searchTerm.length() > 20) return false;
+        if (searchTerm.length() > 20) {
+            return false;
+        }
         //injektion mahdollisuus, jos suoraan merkkijonosta tehdään query
         return true;
     }
-    
+
 }

@@ -1,0 +1,75 @@
+***************
+*** 38,56 ****
+      then 'article is created', {
+          driver.getPageSource().contains("Reference created").shouldBe true
+      }
+  }
+  scenario "Article creation succesfull with valid values and check list page", {
+-    given 'created', {
+          driver = new HtmlUnitDriver();
+          driver.get("http://localhost:8080");
+          element = driver.findElement(By.linkText("Lisää uusi artikkeli"));       
+          element.click();       
+      }
+- when 'move to list page', {
+-  element = driver.findElement(By.name("bibtexKey"));
+-         element.sendKeys("S06");
+          element = driver.findElement(By.name("author"));
+-         element.sendKeys("Kirjoittaja");
+          element = driver.findElement(By.name("title"));
+          element.sendKeys("Otsikko");
+          element = driver.findElement(By.name("article.journal"));
+--- 37,55 ----
+      then 'article is created', {
+          driver.getPageSource().contains("Reference created").shouldBe true
+      }
++ 
+  }
+  scenario "Article creation succesfull with valid values and check list page", {
++    given 'Move to page', {
+          driver = new HtmlUnitDriver();
+          driver.get("http://localhost:8080");
+          element = driver.findElement(By.linkText("Lisää uusi artikkeli"));       
+          element.click();       
+      }
++ when 'Values entered and submit clicked', {
++ 
+          element = driver.findElement(By.name("author"));
++         element.sendKeys("Vihavainen");
+          element = driver.findElement(By.name("title"));
+          element.sendKeys("Otsikko");
+          element = driver.findElement(By.name("article.journal"));
+***************
+*** 103,109 ****
+      }
+   
+      then 'check list page', {
+-         driver.getPageSource().contains("S06").shouldBe true
+      }
+  }
+  
+--- 103,109 ----
+      }
+   
+      then 'check list page', {
++         driver.getPageSource().contains("V2016").shouldBe true
+      }
+  }
+  
+***************
+*** 115,121 ****
+          element.click();       
+      }
+  
+-     when 'created', {
+          element = driver.findElement(By.name("bibtexKey"));
+          element.sendKeys("S05");
+          
+--- 115,121 ----
+          element.click();       
+      }
+  
++     when 'Values entered and submit clicked', {
+          element = driver.findElement(By.name("bibtexKey"));
+          element.sendKeys("S05");
+          
