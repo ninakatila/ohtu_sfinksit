@@ -23,6 +23,9 @@ public class ArticleController {
 
     @Autowired
     private ReferenceRepository rep;
+    
+    @Autowired
+    private ArticleReference articles;
 
     @RequestMapping(method = RequestMethod.GET)
     public String viewCreatePage(@ModelAttribute Reference reference) {
