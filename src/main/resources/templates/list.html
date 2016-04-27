@@ -37,7 +37,7 @@
 <p th:if="${!ref.book.series.isEmpty()}">series = {<span th:text="${ref.book.series}">series</span>},<br/></p>
 <p th:if="${!ref.book.address.isEmpty()}">address = {<span th:text="${ref.book.address}">address</span>},<br/></p>
 <p th:if="${!ref.book.edition.isEmpty()}">edition = {<span th:text="${ref.book.edition}">edition</span>},<br/></p>   
-<p th:if="${!ref.book.month.isEmpty()}">month = {<span th:text="${ref.book.month}">month</span>},<br/></p>
+<p th:if="${ref.book.month != null}">month = {<span th:text="${ref.book.month}">month</span>},<br/></p>
 <p th:if="${!ref.book.note.isEmpty()}">note = {<span th:text="${ref.book.note}">note</span>},<br/></p>
 <p>}<br/></p>
                     </div>

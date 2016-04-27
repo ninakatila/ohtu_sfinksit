@@ -15,7 +15,7 @@ public class Book extends AbstractPersistable<Long>{
     public String series;
     public String address;
     public String edition;
-    public String month;
+    public int month;
     public String note;
     
     public Reference getRef() {
@@ -58,11 +58,11 @@ public class Book extends AbstractPersistable<Long>{
         this.address = address;
     }
 
-    public String getMonth() {
+    public int getMonth() {
         return month;
     }
 
-    public void setMonth(String month) {
+    public void setMonth(int month) {
         this.month = month;
     }
 

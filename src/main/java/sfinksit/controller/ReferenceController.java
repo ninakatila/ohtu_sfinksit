@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import sfinksit.domain.Reference;
 import sfinksit.repository.ReferenceRepository;
+import sfinksit.tools.SearchCheck;
 
 @Controller
 @RequestMapping("*")
@@ -38,21 +39,19 @@ public class ReferenceController {
 
     @RequestMapping(value = "search", method = RequestMethod.POST)
     public String findThisObject(@RequestParam(value = "search") String searchTerm, Model model) {
-        if (!validateStringSearch(searchTerm)) {
-            model.addAttribute("failedSearch", "Hakuehto liian pitkä");
+        SearchCheck check = new SearchCheck(searchTerm);
+        if (!check.checkWordValidation()) {
+            model.addAttribute("failedSearch", "Hakuehto ei täytä vaatimuksia");
             return "findObject";
         }
-
-        model.addAttribute("references", rep.findSearchTermFromAll(searchTerm));
+        
+        if (check.wordContainsOnlyInteger()) {
+            int searchInt = Integer.parseInt(searchTerm);
+            model.addAttribute("references", rep.findSearchTermFromStringsAndIntegers(searchTerm, searchInt));
+        } else {
+            model.addAttribute("references", rep.findSearchTermFromAll(searchTerm));
+        }
+        
         return "list";
     }
-
-    public boolean validateStringSearch(String searchTerm) {
-        if (searchTerm.length() > 20) {
-            return false;
-        }
-        //injektion mahdollisuus, jos suoraan merkkijonosta tehdään query
-        return true;
-    }
-
 }
