@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sfinksit.domain.Conference;
 import sfinksit.domain.Reference;
 import sfinksit.repository.ConferenceRepository;
 import sfinksit.repository.ReferenceRepository;
@@ -25,14 +26,14 @@ public class ConferenceController {
     
     
     @RequestMapping(method=RequestMethod.GET)
-    public String viewCreatePage(@ModelAttribute Reference reference) {
+    public String viewCreatePage(@ModelAttribute Reference reference, @ModelAttribute Conference conference) {
         return "createConference";
     }
     
     @Transactional
     @RequestMapping(method=RequestMethod.POST)
-    public String create(@Valid @ModelAttribute Reference reference, BindingResult bind, RedirectAttributes redirect, Model model) {
-        if (bind.hasErrors()) {
+    public String create(@Valid @ModelAttribute(value="reference") Reference reference, BindingResult bindReference, @Valid @ModelAttribute(value="conference") Conference conference, BindingResult bindConference, RedirectAttributes redirect, Model model) {
+        if (bindReference.hasErrors() || bindConference.hasErrors()) {
             return "createConference";
         }
          if (reference.bibtexKey.isEmpty()) {
@@ -47,6 +48,7 @@ public class ConferenceController {
             return "createConference";
         }
         
+        reference.setConference(conference);
         rep.save(reference);
         
         redirect.addFlashAttribute("created", "Reference has created");

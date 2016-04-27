@@ -13,66 +13,66 @@
             <p><b>BibtexKey has to be unique</b></p>
         </div>
 
-        <form action="#" th:action="@{/references/article}" th:object="${reference}" method="POST">
+        <form action="#" th:action="@{/references/article}"  method="POST">
 
 <table> 
         <tr>
-            <td>Citation key: </td>
-            <td><input type="text" th:field="*{bibtexKey}" /></td>
-            <td th:if="${#fields.hasErrors('bibtexKey')}" th:errors="*{bibtexKey}">Validation error</td>
+            <td><label for ="bibtexKey">Citation key: </label></td>
+            <td><input type="text" th:field="*{reference.bibtexKey}" id="bibtexKey" /></td>
+            <td th:if="${#fields.hasErrors('reference.bibtexKey')}" th:errors="*{reference.bibtexKey}">Validation error</td>
         </tr>
         
         <tr>
-            <td>Author: </td>
-            <td><input type="text" th:field="*{author}" id="index" /></td>
-            <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Validation error</td>
+            <td><label for="author">Author: </label></td>
+            <td><input type="text" th:field="*{reference.author}" id="author" /></td>
+            <td th:if="${#fields.hasErrors('reference.author')}" th:errors="*{reference.author}">Validation error</td>
         </tr>
     
         <tr>
-            <td>Title: </td>
-            <td><input type="text" th:field="*{title}" id="title" /></td>
-             <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Validation error</td>
+            <td><label for="title">Title: </label></td>
+            <td><input type="text" th:field="*{reference.title}" id="title" /></td>
+             <td th:if="${#fields.hasErrors('reference.title')}" th:errors="*{reference.title}">Validation error</td>
         </tr>
             
         <tr>
-            <td>Journal: </td>
-            <td><input type="text" th:field="*{article.journal}" name="journal" /></td>
+            <td><label for="journal">Journal: </label></td>
+            <td><input type="text" th:field="*{article.journal}" id="journal" /></td>
              <td th:if="${#fields.hasErrors('article.journal')}" th:errors="*{article.journal}">Validation error</td>
         </tr>
     
         <tr>
-            <td>Volume: </td>
+            <td><label for="volume">Volume: </label></td>
             <td><input type="text" th:field="*{article.volume}" id="volume" /></td>
              <td th:if="${#fields.hasErrors('article.volume')}" th:errors="*{article.volume}">Validation error</td>
         </tr>
     
         <tr>
-            <td>Number: </td>
+            <td><label for="number">Number: </label></td>
             <td><input type="text" th:field="*{article.number}" id="number" /></td>
              <td th:if="${#fields.hasErrors('article.number')}" th:errors="*{article.number}">Validation error</td>
         </tr>
 
         <tr>
-            <td>Publishing year: </td>
-            <td><input type="text" th:field="*{year}" id="year" /></td>
-             <td th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Validation error</td>
+            <td><label for="year">Publishing year: </label></td>
+            <td><input type="text" th:field="*{reference.year}" id="year" /></td>
+             <td th:if="${#fields.hasErrors('reference.year')}" th:errors="*{reference.year}">Validation error</td>
         </tr>
     
         <tr>
-            <td>Pages: </td>
-            <td><input type="text" th:field="*{article.startPage}" id="startPage" />-<input type="text" th:field="*{article.endPage}" id="endPage" /></td>
+            <td><label for="pages">Pages: </label></td>
+            <td><input type="text" th:field="*{article.startPage}" id="pages" />-<input type="text" th:field="*{article.endPage}" id="pages" /></td>
             <td th:if="${#fields.hasErrors('article.startPage')}" th:errors="*{article.startPage}">Validation error</td>
              <td th:if="${#fields.hasErrors('article.endPage')}" th:errors="*{article.endPage}">Validation error</td>
         </tr>
 
         <tr>
-            <td>Publisher: </td>
-            <td><input type="text" th:field="*{publisher}" id="publisher" /></td>
-            <td th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">Validation error</td>
+            <td><label for="publisher">Publisher: </label></td>
+            <td><input type="text" th:field="*{reference.publisher}" id="publisher" /></td>
+            <td th:if="${#fields.hasErrors('reference.publisher')}" th:errors="*{reference.publisher}">Validation error</td>
         </tr>
     
         <tr>
-            <td>Address: </td>
+            <td><label for="address">Address: </label></td>
             <td><input type="text" th:field="*{article.address}" id="address" /></td>
             <td th:if="${#fields.hasErrors('article.address')}" th:errors="*{article.address}">Validation error</td>
         </tr>

@@ -17,16 +17,16 @@ public class Article extends AbstractPersistable<Long> {
     @Size(min = 4)
     public String journal;
 
-    @Min(value = 0)
+    @Min(0)
     public int volume;
 
-    @Min(value = 0)
+    @Min(0)
     public int number;
     
-    @Min(value = 0)
+    @Min(0)
     public int startPage;
 
-    @Min(value = 0)
+    @Min(0)
     public int endPage;
     
     public String address;

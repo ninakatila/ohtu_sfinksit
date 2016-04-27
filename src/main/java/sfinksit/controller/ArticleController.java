@@ -24,19 +24,19 @@ public class ArticleController {
     @Autowired
     private ReferenceRepository rep;
     
-    @Autowired
-    private ArticleRepository articles;
+    // @Autowired
+    // private ArticleRepository articles;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String viewCreatePage(@ModelAttribute Reference reference) {
+    public String viewCreatePage(@ModelAttribute Reference reference, @ModelAttribute Article article) {
         return "article";
     }
 
     @Transactional
     @RequestMapping(method = RequestMethod.POST)
-    public String create(@Valid @ModelAttribute Reference reference, BindingResult bind, RedirectAttributes redirect, Model model) {
+    public String create(@Valid @ModelAttribute(value="reference") Reference reference, BindingResult bindReference, @Valid @ModelAttribute(value="article") Article article, BindingResult bindArticle, RedirectAttributes redirect, Model model) {
 
-        if (bind.hasErrors()) {
+        if (bindReference.hasErrors() || bindArticle.hasErrors()) {
             return "article";
         }
 
@@ -53,6 +53,7 @@ public class ArticleController {
             return "article";
         }
 
+        reference.setArticle(article);
         rep.save(reference);
 
         redirect.addFlashAttribute("created", "Reference has created");

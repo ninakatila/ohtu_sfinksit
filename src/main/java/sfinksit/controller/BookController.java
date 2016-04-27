@@ -26,14 +26,14 @@ public class BookController {
     
     
     @RequestMapping(method=RequestMethod.GET)
-    public String viewCreatePage(@ModelAttribute Reference reference) {
+    public String viewCreatePage(@ModelAttribute Reference reference, @ModelAttribute Book book) {
         return "createBook";
     }
     
     @Transactional
     @RequestMapping(method=RequestMethod.POST)
-    public String create(@Valid @ModelAttribute Reference reference, BindingResult bind, RedirectAttributes redirect, Model model) {
-        if (bind.hasErrors()) {
+    public String create(@Valid @ModelAttribute(value="reference") Reference reference, BindingResult bindReference, @Valid @ModelAttribute(value="book") Book book, BindingResult bindBook, RedirectAttributes redirect, Model model) {
+        if (bindReference.hasErrors() || bindBook.hasErrors()) {
             return "createBook";
         }
          if (reference.bibtexKey.isEmpty()) {
@@ -48,6 +48,7 @@ public class BookController {
             return "createBook";
         }
         
+        reference.setBook(book);
         rep.save(reference);
         
         redirect.addFlashAttribute("created", "Book was created");

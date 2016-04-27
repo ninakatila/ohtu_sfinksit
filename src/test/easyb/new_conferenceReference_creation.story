@@ -16,13 +16,13 @@ scenario "Conference creation succesfull with valid values", {
     }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("bibtexKey"));
+        element = driver.findElement(By.name("reference.bibtexKey"));
         element.sendKeys("B06");
-        element = driver.findElement(By.name("author"));
+        element = driver.findElement(By.name("reference.author"));
         element.sendKeys("Kirjoittaja2");
-        element = driver.findElement(By.name("title"));
+        element = driver.findElement(By.name("reference.title"));
         element.sendKeys("Otsikko2");
-        element = driver.findElement(By.name("publisher"));
+        element = driver.findElement(By.name("reference.publisher"));
         element.sendKeys("Julkaisija2");
 
         element = driver.findElement(By.tagName("button"));
@@ -43,12 +43,12 @@ scenario "Conference creation unsuccesfull with missing values", {
     }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("bibtexKey"));
+        element = driver.findElement(By.name("reference.bibtexKey"));
         element.sendKeys("B07");
         
-        element = driver.findElement(By.name("title"));
+        element = driver.findElement(By.name("reference.title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("publisher"));
+        element = driver.findElement(By.name("reference.publisher"));
         element.sendKeys("Julkaisija");
 
         element = driver.findElement(By.tagName("button"));
