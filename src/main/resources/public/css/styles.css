@@ -1,4 +1,7 @@
-imput[type=text] {
-    width: 200px;
+imput {
+    width: 300px;
 }
 
+             p {
+                 display: inline;
+             }
