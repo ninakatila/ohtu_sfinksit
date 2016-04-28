@@ -7,11 +7,33 @@
     </head>
     <body>    
         <table>
-            <thead><td>Citation key</td> <td>Author/Authors</td> <td>Title</td> <td>Year>/td> <td>Delete</td> </thead>
+            <thead><td>Citation key</td> <td>Author/Authors</td> <td>Title</td> <td>Year</td> <td>Type</td> <td>Delete</td> </thead>
             <tr th:each="ref : ${references}">
-                <td>
+                <td th:text="${ref.bibtexKey}">key</td>
+                <td th:text="${ref.author}">author</td>
+                <td th:text="${ref.title}">title</td>
+                <td th:text="${ref.year}">year</td>
+                
+                <div th:if="${ref.article != null}">
+                    <td>Article</td>
+                </div>
+                
+                <div th:if="${ref.book != null}">
+                    <td>Book</td>
+                </div>
+                
+                <div th:if="${ref.conference != null}">
+                    <td>Conference</td>
+                </div>
+                
+                <td> <form th:action="@{/references/{id}(id=${ref.id})}" th:method="delete">
+                        <button type="submit">Delete</button> 
+                    </form>
+                </td>
             </tr>
         </table>
+
+        <p><a href="/bibtex">BibTex</a></p>
         <p><a href="/">Etusivu</a></p>
         
     </body>

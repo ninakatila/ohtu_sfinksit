@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +32,12 @@ public class ReferenceController {
         model.addAttribute("references", rep.findAll());
         return "list";
     }
+    
+    @RequestMapping(value="bibtex", method=RequestMethod.GET)
+    public String viewBibtex(Model model) {
+        model.addAttribute("references", rep.findAll());
+        return "bibtex";
+    }
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public String viewfindThisObject(String name, @ModelAttribute Reference reference) {
@@ -53,5 +60,12 @@ public class ReferenceController {
         }
         
         return "list";
+    }
+    
+    @RequestMapping(value="/references/{id}", method=RequestMethod.DELETE)
+    public String delete(@PathVariable Long id) {
+        rep.delete(id);
+        
+        return "redirect:/list";
     }
 }
