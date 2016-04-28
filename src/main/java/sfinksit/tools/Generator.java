@@ -8,8 +8,6 @@ public class Generator {
 
     private static char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'};
 
-    public Generator() {
-    }
 
     public String generate(ReferenceRepository rep, Reference ref) {
 
@@ -36,7 +34,7 @@ public class Generator {
         String name = "";
         for (int i = 0; i < names.length; i++) {
             int j = 0;
-            while (names[i].substring(j, j+1)==" ") {
+            while (names[i].substring(j, j+1).equalsIgnoreCase(" ")) {
                 j++;
             }
             name = name + names[i].substring(j, j + 1);
