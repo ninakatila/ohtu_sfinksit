@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Start a server specifically for easyB tests
-mvn -Dserver.port=8081 spring-boot:run &
+mvn -Dserver.port=8080 spring-boot:run &
 SPRING_PID=$!
 
 sleep 20s # Give the server enough time to start
