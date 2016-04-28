@@ -1,5 +1,6 @@
 package sfinksit.tools;
 
+import java.util.ArrayList;
 import sfinksit.domain.Reference;
 import sfinksit.repository.ReferenceRepository;
 
@@ -8,14 +9,13 @@ public class Generator {
     private static char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'};
 
     public Generator() {
-
     }
 
     public String generate(ReferenceRepository rep, Reference ref) {
-        String key = ref.bibtexKey = ref.author.substring(0, 1) + ref.year;
 
-        if (rep.findExistingBibtexKey(key)
-                .size() > 0) {
+        String key = split(ref);
+
+        if (rep.findExistingBibtexKey(key).size() > 0) {
             for (int i = 0; i < 6; i++) {
                 key = key + alphabet[i];
                 if (rep.findExistingBibtexKey(key).size() > 0) {
@@ -30,4 +30,18 @@ public class Generator {
         return key;
     }
 
+    public String split(Reference ref) {
+
+        String[] names = ref.author.split(";");
+        String name = "";
+        for (int i = 0; i < names.length; i++) {
+            int j = 0;
+            while (names[i].substring(j, j+1)==" ") {
+                j++;
+            }
+            name = name + names[i].substring(j, j + 1);
+
+        }
+        return name + ref.year;
+    }
 }
