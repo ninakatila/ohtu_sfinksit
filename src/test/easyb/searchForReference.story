@@ -12,15 +12,15 @@ before "create article, book and conference", {
     element = drivers.findElement(By.linkText("Lisää uusi artikkeli"));       
     element.click();
 
-    element = drivers.findElement(By.name("reference.author"));
+    element = drivers.findElement(By.name("author"));
     element.sendKeys("Lumiukko Maailma");
-    element = drivers.findElement(By.name("reference.title"));
+    element = drivers.findElement(By.name("title"));
     element.sendKeys("Lumiukon seikkailut");
-    element = drivers.findElement(By.name("article.journal"));
+    element = drivers.findElement(By.name("journal"));
     element.sendKeys("Kahvi");
-    element = drivers.findElement(By.name("reference.publisher"));
+    element = drivers.findElement(By.name("publisher"));
     element.sendKeys("Kahvia");
-    element = drivers.findElement(By.name("article.address"));
+    element = drivers.findElement(By.name("address"));
     element.sendKeys("Pohjoinen");
 
     element = drivers.findElement(By.tagName("button"));
@@ -32,11 +32,11 @@ before "create article, book and conference", {
     element = driverA.findElement(By.linkText("Lisää uusi kirja"));       
     element.click(); 
             
-    element = driverA.findElement(By.name("reference.author"));
+    element = driverA.findElement(By.name("author"));
     element.sendKeys("Mahtava Joutsen");
-    element = driverA.findElement(By.name("reference.title"));
+    element = driverA.findElement(By.name("title"));
     element.sendKeys("Joutsenen kotimatka");
-    element = driverA.findElement(By.name("reference.publisher"));
+    element = driverA.findElement(By.name("publisher"));
     element.sendKeys("Kahvia");
 
     element = driverA.findElement(By.tagName("button"));

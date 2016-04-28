@@ -16,19 +16,19 @@ scenario "Article creation succesfull with valid values", {
     }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("reference.bibtexKey"));
+        element = driver.findElement(By.name("bibtexKey"));
         element.sendKeys("S04");
-        element = driver.findElement(By.name("reference.author"));
+        element = driver.findElement(By.name("author"));
         element.sendKeys("Kirjoittaja");
-        element = driver.findElement(By.name("reference.title"));
+        element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("article.journal"));
+        element = driver.findElement(By.name("journal"));
         element.sendKeys("Julkaisu");
-        element = driver.findElement(By.name("article.volume"));
+        element = driver.findElement(By.name("volume"));
         element.sendKeys("10");
-        element = driver.findElement(By.name("article.number"));
+        element = driver.findElement(By.name("number"));
         element.sendKeys("20");
-        element = driver.findElement(By.name("reference.publisher"));
+        element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
         element = driver.findElement(By.tagName("button"));
         element.click();
@@ -48,19 +48,19 @@ scenario "Article creation succesfull with valid values and check list page", {
      }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("reference.author"));
+        element = driver.findElement(By.name("author"));
         element.sendKeys("Vihavainen");
-        element = driver.findElement(By.name("reference.title"));
+        element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("article.journal"));
+        element = driver.findElement(By.name("journal"));
         element.sendKeys("Julkaisu");
-        element = driver.findElement(By.name("article.volume"));
+        element = driver.findElement(By.name("volume"));
         element.sendKeys("10");
-        element = driver.findElement(By.name("article.number"));
+        element = driver.findElement(By.name("number"));
         element.sendKeys("20");
-        element = driver.findElement(By.name("reference.publisher"));
+        element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
-        element = driver.findElement(By.name("reference.year"));
+        element = driver.findElement(By.name("year"));
         element.sendKeys("2016");
 
         element = driver.findElement(By.tagName("button"));
@@ -84,14 +84,14 @@ scenario "Article creation unsuccesfull with missing values", {
     }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("reference.bibtexKey"));
+        element = driver.findElement(By.name("bibtexKey"));
         element.sendKeys("S05");
         
-        element = driver.findElement(By.name("reference.title"));
+        element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("reference.publisher"));
+        element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
-        element = driver.findElement(By.name("reference.year"));
+        element = driver.findElement(By.name("year"));
         element.sendKeys("2016");
         element = driver.findElement(By.tagName("button"));
         element.click();

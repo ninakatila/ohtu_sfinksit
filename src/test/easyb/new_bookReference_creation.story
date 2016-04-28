@@ -16,13 +16,13 @@ scenario "Book creation succesfull with valid values", {
     }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("reference.bibtexKey"));
+        element = driver.findElement(By.name("bibtexKey"));
         element.sendKeys("W04");
-        element = driver.findElement(By.name("reference.author"));
+        element = driver.findElement(By.name("author"));
         element.sendKeys("Kirjoittaja");
-        element = driver.findElement(By.name("reference.title"));
+        element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("reference.publisher"));
+        element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
 
         element = driver.findElement(By.tagName("button"));
@@ -43,12 +43,12 @@ scenario "Book creation unsuccesfull with missing values", {
     }
 
     when 'Values entered and submit clicked', {
-        element = driver.findElement(By.name("reference.bibtexKey"));
+        element = driver.findElement(By.name("bibtexKey"));
         element.sendKeys("W05");
         
-        element = driver.findElement(By.name("reference.title"));
+        element = driver.findElement(By.name("title"));
         element.sendKeys("Otsikko");
-        element = driver.findElement(By.name("reference.publisher"));
+        element = driver.findElement(By.name("publisher"));
         element.sendKeys("Julkaisija");
 
         element = driver.findElement(By.tagName("button"));
