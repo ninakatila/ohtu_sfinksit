@@ -59,7 +59,7 @@ public class ReferenceController {
             model.addAttribute("references", rep.findSearchTermFromAll(searchTerm));
         }
         
-        return "list";
+        return "bibtex";
     }
     
     @RequestMapping(value="/references/{id}", method=RequestMethod.DELETE)
