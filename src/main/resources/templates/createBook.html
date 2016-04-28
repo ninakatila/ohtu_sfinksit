@@ -3,6 +3,7 @@
     <head>
         <title>book</title>
         <meta charset="UTF-8"/>
+        <link th:href="@{/css/styles.css}" rel="stylesheet"  href="../../css/styles.css"/>
     </head>
     <body>
         <div>
@@ -24,7 +25,7 @@
 
                     <tr>
                         <td><label for="author">Author/Editor: </label></td>
-                        <td><input type="text" th:field="*{reference.author}" id="author" /></td>
+                        <td><input type="text" th:field="*{reference.author}" id="author" placeholder="(Vihavainen, Arto; Luukkainen, Matti)" /></td>
                         <td th:if="${#fields.hasErrors('reference.author')}" th:errors="*{reference.author}">Validation error</td>
                     </tr>
 
