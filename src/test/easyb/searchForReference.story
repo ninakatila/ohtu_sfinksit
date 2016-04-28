@@ -25,21 +25,31 @@ before "create article, book and conference", {
 
     element = drivers.findElement(By.tagName("button"));
     element.click();
-    
-    driverA = new HtmlUnitDriver();
-    driverA.get("http://localhost:8080");
 
-    element = driverA.findElement(By.linkText("Lisää uusi kirja"));       
+    element = drivers.findElement(By.linkText("Lisää uusi kirja"));       
     element.click(); 
             
-    element = driverA.findElement(By.name("author"));
+    element = drivers.findElement(By.name("author"));
     element.sendKeys("Mahtava Joutsen");
-    element = driverA.findElement(By.name("title"));
+    element = drivers.findElement(By.name("title"));
     element.sendKeys("Joutsenen kotimatka");
-    element = driverA.findElement(By.name("publisher"));
+    element = drivers.findElement(By.name("publisher"));
     element.sendKeys("Kahvia");
 
-    element = driverA.findElement(By.tagName("button"));
+    element = drivers.findElement(By.tagName("button"));
+    element.click();
+    
+    element = drivers.findElement(By.linkText("Lisää uusi konferenssi"));       
+    element.click(); 
+            
+    element = drivers.findElement(By.name("author"));
+    element.sendKeys("Mahtava Tulipallo");
+    element = drivers.findElement(By.name("title"));
+    element.sendKeys("Liekkien varassa");
+    element = drivers.findElement(By.name("publisher"));
+    element.sendKeys("Kahvia");
+
+    element = drivers.findElement(By.tagName("button"));
     element.click();
 }
 
@@ -82,6 +92,27 @@ scenario "An existing book can be found with a saved value", {
 
     then 'book is found', {
         driver.getPageSource().contains("Joutsenen kotimatka").shouldBe true
+    }
+}
+
+scenario "An existing conference can be found with a saved value", {
+   given 'click for search', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080");
+        element = driver.findElement(By.linkText("Haku"));       
+        element.click();       
+    }
+
+    when 'search with a given word', {
+        element = driver.findElement(By.name("search"));
+        element.sendKeys("Mahtava Tulipallo");
+
+        element = driver.findElement(By.tagName("button"));
+        element.click();
+    }
+
+    then 'conference is found', {
+        driver.getPageSource().contains("Kahvia").shouldBe true
     }
 }
 
@@ -128,5 +159,9 @@ scenario "Search returns several items", {
     and 
     then 'book is found', {
         driver.getPageSource().contains("Mahtava Joutsen").shouldBe true
+    }
+    and
+    then 'conference is found', {
+        driver.getPageSource().contains("Tulipallo").shouldBe true
     }
 }
