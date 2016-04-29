@@ -6,5 +6,4 @@ Sovelluksen sivut: https://sfinksit.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/ninakatila/ohtu_sfinksit.svg?branch=master)](https://travis-ci.org/ninakatila/ohtu_sfinksit)
 
-
-
+.
