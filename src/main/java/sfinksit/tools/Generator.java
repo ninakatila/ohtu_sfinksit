@@ -34,10 +34,12 @@ public class Generator {
         String name = "";
         for (int i = 0; i < names.length; i++) {
             int j = 0;
-            while (names[i].substring(j, j+1).equalsIgnoreCase(" ")) {
-                j++;
-            }
-            name = name + names[i].substring(j, j + 1);
+            // while (names[i].substring(j, j+1).equalsIgnoreCase(" ")) {
+            //     j++;
+            // }
+
+            String trimed = names[i].trim();            
+            name = name + trimed.substring(j, j + 1);
 
         }
         return name + ref.year;

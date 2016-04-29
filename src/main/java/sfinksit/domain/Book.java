@@ -11,11 +11,11 @@ public class Book extends AbstractPersistable<Long>{
     public Reference ref;
     
     
-    public int volume;
+    public Integer volume;
     public String series;
     public String address;
     public String edition;
-    public int month;
+    public Integer month;
     public String note;
     
     public Reference getRef() {
@@ -34,11 +34,11 @@ public class Book extends AbstractPersistable<Long>{
         this.edition = edition;
     }
 
-    public int getVolume() {
+    public Integer getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
@@ -58,11 +58,11 @@ public class Book extends AbstractPersistable<Long>{
         this.address = address;
     }
 
-    public int getMonth() {
+    public Integer getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(Integer month) {
         this.month = month;
     }
 

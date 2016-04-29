@@ -12,12 +12,12 @@ public class Conference extends AbstractPersistable<Long> {
     
     public String booktitle;
     public String editor;
-    public int volume;
+    public Integer volume;
     public String series;
-    public int startPage;
-    public int endPage;
+    public Integer startPage;
+    public Integer endPage;
     public String address;
-    public int month;
+    public Integer month;
     public String organization;
     public String note;
     
@@ -37,19 +37,19 @@ public class Conference extends AbstractPersistable<Long> {
         this.booktitle = booktitle;
     }
 
-    public int getStartPage() {
+    public Integer getStartPage() {
         return startPage;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
     }
 
-    public int getEndPage() {
+    public Integer getEndPage() {
         return endPage;
     }
 
-    public void setEndPage(int endPage) {
+    public void setEndPage(Integer endPage) {
         this.endPage = endPage;
     }
 
@@ -61,11 +61,11 @@ public class Conference extends AbstractPersistable<Long> {
         this.editor = editor;
     }
 
-    public int getVolume() {
+    public Integer getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
@@ -85,11 +85,11 @@ public class Conference extends AbstractPersistable<Long> {
         this.address = address;
     }
 
-    public int getMonth() {
+    public Integer getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(Integer month) {
         this.month = month;
     }
 

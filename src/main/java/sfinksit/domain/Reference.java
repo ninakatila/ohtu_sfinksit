@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -15,18 +16,18 @@ public class Reference extends AbstractPersistable<Long> {
     // @Column(unique=true)
     public String bibtexKey;
 
-    @NotNull
+    @NotBlank
     @Size(min = 4)
     public String author;
 
-    @NotNull
+    @NotBlank
     @Size(min = 4)
     public String title;
 
     @Min(value = 0)
-    public int year;
+    public Integer year;
 
-    @NotNull
+    @NotBlank
     @Size(min = 3)
     public String publisher;
     
@@ -53,7 +54,7 @@ public class Reference extends AbstractPersistable<Long> {
         return title;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
@@ -86,7 +87,7 @@ public class Reference extends AbstractPersistable<Long> {
         this.title = title;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 

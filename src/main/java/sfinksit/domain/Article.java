@@ -5,6 +5,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -13,21 +14,21 @@ public class Article extends AbstractPersistable<Long> {
     @OneToOne(mappedBy="article")
     public Reference reference;
     
-    @NotNull
+    @NotBlank
     @Size(min = 4)
     public String journal;
 
     @Min(0)
-    public int volume;
+    public Integer volume;
 
     @Min(0)
-    public int number;
+    public Integer number;
     
     @Min(0)
-    public int startPage;
+    public Integer startPage;
 
     @Min(0)
-    public int endPage;
+    public Integer endPage;
     
     public String address;
     
@@ -40,19 +41,19 @@ public class Article extends AbstractPersistable<Long> {
         return this.journal;
     }
     
-    public int getVolume() {
+    public Integer getVolume() {
         return this.volume;
     }
     
-    public int getNumber() {
+    public Integer getNumber() {
         return this.number;
     }
     
-    public int getStartPage() {
+    public Integer getStartPage() {
         return this.startPage;
     }
     
-    public int getEndPage() {
+    public Integer getEndPage() {
         return this.endPage;
     }
     
@@ -69,19 +70,19 @@ public class Article extends AbstractPersistable<Long> {
         this.journal = journal;
     }
     
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
-    public void setStartPage(int startPage) {
+    public void setStartPage(Integer startPage) {
         this.startPage = startPage;
     }
 
-    public void setEndPage(int endPage) {
+    public void setEndPage(Integer endPage) {
         this.endPage = endPage;
     }
 
