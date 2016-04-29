@@ -14,20 +14,25 @@ public class Generator {
         String key = split(ref);
 
         if (rep.findExistingBibtexKey(key).size() > 0) {
-            for (int i = 0; i < 6; i++) {
-                key = key + alphabet[i];
-                if (rep.findExistingBibtexKey(key).size() > 0) {
-                    key = key.substring(0, key.length() - 1);
-                } else {
-                    break;
-                }
-
-            }
+            key = generateLoop(key, rep);
         }
 
         return key;
     }
 
+    public String generateLoop(String key, ReferenceRepository rep) {
+        String keyToReturn = key;
+        for (int i = 0; i < 6; i++) {
+                keyToReturn = keyToReturn + alphabet[i];
+                if (rep.findExistingBibtexKey(keyToReturn).size() > 0) {
+                    keyToReturn = keyToReturn.substring(0, keyToReturn.length() - 1);
+                } else {
+                    break;
+                }
+            }
+        return keyToReturn;  
+    }
+    
     public String split(Reference ref) {
 
         String[] names = ref.author.split(";");
