@@ -7,8 +7,7 @@ import sfinksit.repository.ReferenceRepository;
 public class Generator {
 
     private static char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'};
-
-
+    
     public String generate(ReferenceRepository rep, Reference ref) {
 
         String key = split(ref);

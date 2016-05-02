@@ -20,39 +20,37 @@ import sfinksit.tools.Generator;
 @Controller
 @RequestMapping("/references/createConference")
 public class ConferenceController {
-    
+
     @Autowired
     private ReferenceRepository rep;
-    
-    
-    @RequestMapping(method=RequestMethod.GET)
+
+    @RequestMapping(method = RequestMethod.GET)
     public String viewCreatePage(@ModelAttribute Reference reference, @ModelAttribute Conference conference) {
         return "createConference";
     }
-    
+
     @Transactional
-    @RequestMapping(method=RequestMethod.POST)
-    public String create(@Valid @ModelAttribute(value="reference") Reference reference, BindingResult bindReference, @Valid @ModelAttribute(value="conference") Conference conference, BindingResult bindConference, RedirectAttributes redirect, Model model) {
+    @RequestMapping(method = RequestMethod.POST)
+    public String create(@Valid @ModelAttribute(value = "reference") Reference reference, BindingResult bindReference, @Valid @ModelAttribute(value = "conference") Conference conference, BindingResult bindConference, RedirectAttributes redirect, Model model) {
         if (bindReference.hasErrors() || bindConference.hasErrors()) {
             return "createConference";
         }
-         if (reference.bibtexKey.isEmpty()) {
-
-            Generator gen = new Generator();
-            reference.bibtexKey = gen.generate(rep, reference);
-
+        
+        if (reference.bibtexKey.isEmpty()) {
+            reference.generateBibtexKey(rep);
         }
-        List list = rep.findExistingBibtexKey(reference.bibtexKey);
-        if (list.size() > 0){
+        
+        // Check that the BibTeX key for the reference is unique
+        if (rep.findExistingBibtexKey(reference.bibtexKey).size() > 0) {
             model.addAttribute("notvalidBibtexkey", "BibtexKey has to be unique");
             return "createConference";
         }
-        
+
         reference.setConference(conference);
         rep.save(reference);
-        
+
         redirect.addFlashAttribute("created", "Reference has created");
-        
+
         return "redirect:/";
     }
 }

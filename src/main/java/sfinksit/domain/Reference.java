@@ -3,12 +3,13 @@ package sfinksit.domain;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+import sfinksit.repository.ReferenceRepository;
+import sfinksit.tools.Generator;
 
 @Entity
 public class Reference extends AbstractPersistable<Long> {
@@ -40,6 +41,15 @@ public class Reference extends AbstractPersistable<Long> {
     @OneToOne(cascade={CascadeType.ALL})
     public Conference conference;
     
+    /**
+     * Generate an unique BibTeX key for this reference
+     * 
+     * @param rep ReferenceRepository to check that the key is unique
+     */
+    public void generateBibtexKey(ReferenceRepository rep) {
+        Generator gen = new Generator();
+        this.setBibtexKey(gen.generate(rep, this));
+    }
 
     // getterit
     public String getBibtexKey() {

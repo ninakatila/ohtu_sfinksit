@@ -41,14 +41,11 @@ public class ArticleController {
         }
 
         if (reference.bibtexKey.isEmpty()) {
-
-            Generator gen = new Generator();
-            reference.bibtexKey = gen.generate(rep, reference);
-
+            reference.generateBibtexKey(rep);
         }
 
-        List list = rep.findExistingBibtexKey(reference.bibtexKey);
-        if (list.size() > 0) {
+        // Check that the BibTeX key for the reference is unique
+        if (rep.findExistingBibtexKey(reference.bibtexKey).size() > 0) {
             model.addAttribute("notvalidBibtexkey", "BibtexKey has to be unique");
             return "article";
         }
