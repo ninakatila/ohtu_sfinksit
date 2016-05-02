@@ -2,6 +2,9 @@ package sfinksit.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -10,15 +13,35 @@ public class Conference extends AbstractPersistable<Long> {
     @OneToOne(mappedBy="conference")
     public Reference ref;
     
+    @Size(max = 70, message = "length must be below 70")
     public String booktitle;
+    
+    @Size(max = 70, message = "length must be below 70")
     public String editor;
+    
+    @Min(value = 0, message = "must be a positive number")
     public Integer volume;
+    
+    @Size(max = 70, message = "length must be below 70")
     public String series;
+    
+    @Min(value = 0, message = "must be a positive number")
     public Integer startPage;
+    
+    @Min(value = 0, message = "must be a positive number")
     public Integer endPage;
+    
+    @Size(max = 70, message = "length must be below 70")
     public String address;
+    
+    @Min(value = 1, message = "must be between 1 and 12")
+    @Max(value = 12, message = "must be between 1 and 12")
     public Integer month;
+    
+    @Size(max = 70, message = "length must be below 70")
     public String organization;
+    
+    @Size(max = 70, message = "length must be below 70")
     public String note;
     
     public Reference getRef() {

@@ -18,7 +18,7 @@
                         <p class="indented" th:if="${ref.article.volume != null}">volume = {<span th:text="${ref.article.volume}">volume</span>},<br/></p>
                         <p class="indented" th:if="${ref.article.number != null}">number = {<span th:text="${ref.article.number}">number</span>},<br/></p>
                         <p class="indented" th:if="${ref.year != null}">year = {<span th:text="${ref.year}">year</span>},<br/></p>
-                        <p class="indented" th:if="${ref.article.startPage != null}">pages = {<span th:text="${ref.article.startPage}">startPage</span>--</p><p th:if="${ref.article.endPage != null}"><span th:text="${ref.article.endPage}">endPage</span>},<br/></p>
+                        <p class="indented" th:if="${ref.article.startPage != null || ref.article.endPage != null}">pages = {<span th:text="${ref.article.startPage}">startPage</span>--<span th:text="${ref.article.endPage}">endPage</span>},<br/></p>
                         <p class="indented" th:if="${!ref.publisher.isEmpty()}">publisher = {<span th:text="${ref.publisher}">publisher</span>},<br/></p>
                         <p class="indented" th:if="${!ref.article.address.isEmpty()}">address = {<span th:text="${ref.article.address}">address</span>},<br/></p>
                         <p>}<br/></p>
@@ -46,7 +46,7 @@
                         <p class="indented" th:if="${ref.conference.volume != null}">volume/number = {<span th:text="${ref.conference.volume}">volume</span>},<br/></p>
                         <p class="indented" th:if="${!ref.conference.series.isEmpty()}">series = {<span th:text="${ref.conference.series}">series</span>},<br/></p>
                         <p class="indented" th:if="${ref.year != null}">year = {<span th:text="${ref.year}">year</span>},<br/></p>
-                        <p class="indented" th:if="${ref.conference.startPage != null}">pages = {<span th:text="${ref.conference.startPage}">startPage</span>--</p><p th:if="${ref.conference.endPage != null}"><span th:text="${ref.conference.endPage}">endPage</span>},<br/></p>
+                        <p class="indented" th:if="${ref.conference.startPage != null || ref.conference.endPage != null}">pages = {<span th:text="${ref.conference.startPage}">startPage</span>--<span th:text="${ref.conference.endPage}">endPage</span>},<br/></p>
                         <p class="indented" th:if="${!ref.publisher.isEmpty()}">publisher = {<span th:text="${ref.publisher}">publisher</span>},<br/></p>
                         <p class="indented" th:if="${!ref.conference.address.isEmpty()}">address = {<span th:text="${ref.conference.address}">address</span>},<br/></p>
                         <p class="indented" th:if="${!ref.conference.note.isEmpty()}">note = {<span th:text="${ref.conference.note}">note</span>},<br/></p>

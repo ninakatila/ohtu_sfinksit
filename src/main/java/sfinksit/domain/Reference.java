@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -18,18 +17,18 @@ public class Reference extends AbstractPersistable<Long> {
     public String bibtexKey;
 
     @NotBlank
-    @Size(min = 4)
+    @Size(min = 4, message="length must be at least 4")
     public String author;
 
     @NotBlank
-    @Size(min = 4)
+    @Size(min = 4, max = 70, message="length must be between 4 and 70")
     public String title;
 
-    @Min(value = 0)
+    @Min(value = 0, message="must be a positive number")
     public Integer year;
 
     @NotBlank
-    @Size(min = 3)
+    @Size(min = 3, max = 70, message="length must be between 3 and 70")
     public String publisher;
     
     @OneToOne(cascade={CascadeType.ALL})

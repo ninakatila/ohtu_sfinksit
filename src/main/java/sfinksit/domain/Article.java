@@ -3,7 +3,6 @@ package sfinksit.domain;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -15,21 +14,22 @@ public class Article extends AbstractPersistable<Long> {
     public Reference reference;
     
     @NotBlank
-    @Size(min = 4)
+    @Size(min = 4, max = 70, message = "length must be between 4 and 70")
     public String journal;
 
-    @Min(0)
+    @Min(value = 0, message = "must be a positive number")
     public Integer volume;
 
-    @Min(0)
+    @Min(value = 0, message = "must be a positive number")
     public Integer number;
     
-    @Min(0)
+    @Min(value = 0, message = "must be a positive number")
     public Integer startPage;
 
-    @Min(0)
+    @Min(value = 0, message = "must be a positive number")
     public Integer endPage;
     
+    @Size(max = 70, message = "length must be below 70")
     public String address;
     
     // getterit

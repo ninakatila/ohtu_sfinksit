@@ -1,6 +1,5 @@
 package sfinksit.controller;
 
-import java.util.List;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sfinksit.domain.Article;
 import sfinksit.domain.Reference;
-import sfinksit.repository.ArticleRepository;
 import sfinksit.repository.ReferenceRepository;
-import sfinksit.tools.Generator;
 
 @Controller
 @RequestMapping("/references/article")
