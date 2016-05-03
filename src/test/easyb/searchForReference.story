@@ -165,3 +165,22 @@ scenario "Search returns several items", {
         driver.getPageSource().contains("Tulipallo").shouldBe true
     }
 }
+
+scenario "Partial search can be used for search", {
+   given 'get searchpage', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:8080/search");
+    }
+
+    when 'search with a given word', {
+        element = driver.findElement(By.name("search"));
+        element.sendKeys("Lumi");
+
+        element = driver.findElement(By.tagName("button"));
+        element.click();
+    }
+
+    then 'article is found', {
+        driver.getPageSource().contains("Kahvia").shouldBe true
+    }
+}
