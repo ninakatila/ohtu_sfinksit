@@ -41,6 +41,10 @@ public class Generator {
             name = name + trimed.substring(j, j + 1);
 
         }
-        return name + ref.year;
+        Integer vuosi=ref.year;
+        if (vuosi==null || vuosi==0) {
+            vuosi=0000;
+        }
+        return name + vuosi;
     }
 }
